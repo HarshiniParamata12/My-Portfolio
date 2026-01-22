@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Contact - My Portfolio</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <style>
+            /* --- CSS Reset & Variables --- */
+            :root {
+                --primary-color: #6C63FF; /* Matching previous pages */
+                --primary-dark: #5a52d5;
+                --text-dark: #333333;
+                --text-light: #666666;
+                --bg-color: #f9f9ff;      /* Light background */
+                --white: #ffffff;
+                --nav-height: 80px;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                font-family: 'Poppins', sans-serif;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: var(--bg-color);
+                color: var(--text-dark);
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh; /* Ensures footer stays at bottom */
+            }
+
+            a { text-decoration: none; transition: all 0.3s ease; }
+            ul { list-style: none; }
+
+            /* --- Header --- */
+            header {
+                background-color: rgba(255, 255, 255, 0.95);
+                height: var(--nav-height);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 5%;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+                backdrop-filter: blur(10px);
+            }
+
+            .logo {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--primary-color);
+                letter-spacing: 1px;
+            }
+
+            nav ul {
+                display: flex;
+                gap: 30px;
+            }
+
+            nav ul li a {
+                color: var(--text-dark);
+                font-weight: 500;
+                font-size: 1rem;
+                position: relative;
+            }
+
+            nav ul li a::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                background: var(--primary-color);
+                bottom: -5px;
+                left: 0;
+                transition: width 0.3s;
+            }
+
+            nav ul li a:hover::after,
+            nav ul li a.active::after {
+                width: 100%;
+            }
+
+            nav ul li a.active {
+                color: var(--primary-color);
+            }
+
+            /* --- Main Content --- */
+            main {
+                flex: 1; /* Pushes footer down */
+                margin-top: var(--nav-height);
+                padding: 80px 5% 40px 5%;
+                display: flex;
+                justify-content: center;
+                align-items: center; /* Centers vertically if screen is tall */
+                flex-direction: column;
+            }
+
+            .contact-section {
+                width: 100%;
+                max-width: 1200px;
+                text-align: center;
+            }
+
+            /* Heading Styling */
+            .contact-heading {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: var(--text-dark);
+                margin-bottom: 60px;
+                line-height: 1.4;
+            }
+            
+            .contact-heading span {
+                color: var(--primary-color);
+            }
+
+            /* Contact Cards Layout */
+            .contact-cards {
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                flex-wrap: wrap; /* Responsive wrapping */
+            }
+
+            /* Individual Card Styling */
+            .contact-card {
+                background: var(--white);
+                padding: 40px 30px;
+                border-radius: 15px;
+                width: 300px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+                text-align: center;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                border-top: 5px solid transparent;
+            }
+
+            .contact-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                border-top: 5px solid var(--primary-color);
+            }
+
+            /* Icon Styling */
+            .contact-card .icon {
+                font-size: 3rem;
+                margin-bottom: 20px;
+                display: inline-block;
+            }
+            
+            /* Specific color tweaks for icons */
+            .contact-card:nth-child(1) .icon { color: #ea4335; } /* Email Red */
+            .contact-card:nth-child(2) .icon { color: #333; } /* GitHub Black */
+            .contact-card:nth-child(3) .icon { color: #0077b5; } /* LinkedIn Blue */
+
+            .contact-card h4 {
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+                color: var(--text-dark);
+            }
+
+            .contact-card a {
+                color: var(--text-light);
+                font-size: 0.95rem;
+                font-weight: 500;
+            }
+
+            .contact-card a:hover {
+                color: var(--primary-color);
+                text-decoration: underline;
+            }
+
+            /* --- Footer --- */
+            footer {
+                background-color: var(--white);
+                border-top: 1px solid rgba(0,0,0,0.05);
+                padding: 30px 0;
+                margin-top: auto; /* Pushes footer to bottom */
+            }
+
+            .foot-con {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .linkpages {
+                display: flex;
+                gap: 25px;
+            }
+
+            .linkpages a {
+                font-size: 1.5rem;
+                color: var(--text-light);
+            }
+
+            .linkpages a:hover {
+                color: var(--primary-color);
+                transform: scale(1.1);
+            }
+
+            footer p {
+                color: var(--text-light);
+                font-size: 0.9rem;
+            }
+
+            /* --- Mobile Responsive --- */
+            @media (max-width: 768px) {
+                nav { display: none; }
+                header { justify-content: center; }
+                
+                .contact-heading {
+                    font-size: 1.8rem;
+                }
+
+                .contact-card {
+                    width: 100%; /* Full width cards on mobile */
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+              <div class="logo">My Portfolio</div>
+              <ul>
+                <li> <a href="index.html"> Home</a></li>
+                <li> <a href="About.html">About</a></li>
+                <li> <a href="Skills.html">Skills</a></li>
+                <li> <a href="Projects.html ">Project</a></li>
+                <li> <a href="Contacts.html" class="active">Contact</a></li>
+              </ul>
+           </nav>
+       </header>
+       
+      <main>
+      <div class="contact-section">
+
+  <p class="contact-heading">
+    Feel free to reach out for <span>collaborations</span>, <span>opportunities</span>, or queries.
+  </p>
+
+  <div class="contact-cards">
+
+    <div class="contact-card">
+      <span class="icon">📧</span>
+      <h4>Email</h4>
+      <a href="mailto:pharshini809@gmail.com">pharshini809@gmail.com</a>
+    </div>
+
+
+    <div class="contact-card">
+      <span class="icon"><i class="fab fa-github"></i></span>
+      <h4>GitHub</h4>
+      <a href="https://github.com/HarshiniParamata12" target="_blank">
+        github.com/HarshiniParamata12
+      </a>
+    </div>
+
+    <div class="contact-card">
+      <span class="icon">💼</span>
+      <h4>LinkedIn</h4>
+      <a href="https://www.linkedin.com/in/harshini-paramata-7706b9370" target="_blank">
+        linkedin.com/in/harshini-paramata-7706b9370
+      </a>
+    </div>
+
+  </div>
+</div>
+
+      </main>
+      
+      <footer>
+        <div class="foot-con">
+          <div class="linkpages">
+            <a href="https://github.com/HarshiniParamata12" target="_blank"><i class="fab fa-github"></i></a> 
+             <a href="https://www.linkedin.com/in/harshini-paramata-7706b9370" target="_blank">
+              <i class="fab fa-linkedin"></i></a>
+          </div>
+          <p>&copy; 2025 Harshini. All rights reserved.</p>
+        </div>
+       </footer>
+            
+    </body>
+</html>

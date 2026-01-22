@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Skills - My Portfolio</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <style>
+            /* --- CSS Reset & Variables --- */
+            :root {
+                --primary-color: #6C63FF; /* Matching the Home Page */
+                --primary-dark: #5a52d5;
+                --text-dark: #333333;     /* Dark text for light background */
+                --text-light: #666666;    /* Grey text for paragraphs */
+                --bg-color: #f9f9ff;      /* Light background matching Home Page */
+                --white: #ffffff;
+                --nav-height: 80px;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                font-family: 'Poppins', sans-serif;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: var(--bg-color);
+                color: var(--text-dark);
+                overflow-x: hidden;
+            }
+
+            a { text-decoration: none; transition: all 0.3s ease; }
+            ul { list-style: none; }
+
+            /* --- Header (Matching Home/About Style) --- */
+            header {
+                background-color: rgba(255, 255, 255, 0.95);
+                height: var(--nav-height);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 5%;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+                backdrop-filter: blur(10px);
+            }
+
+            .logo {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--primary-color);
+                letter-spacing: 1px;
+            }
+
+            nav ul {
+                display: flex;
+                gap: 30px;
+            }
+
+            nav ul li a {
+                color: var(--text-dark);
+                font-weight: 500;
+                font-size: 1rem;
+                position: relative;
+            }
+
+            nav ul li a::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                background: var(--primary-color);
+                bottom: -5px;
+                left: 0;
+                transition: width 0.3s;
+            }
+
+            nav ul li a:hover::after,
+            nav ul li a.active::after {
+                width: 100%;
+            }
+
+            nav ul li a.active {
+                color: var(--primary-color);
+            }
+
+            /* --- Main Content --- */
+            main {
+                margin-top: var(--nav-height);
+                padding: 80px 5% 40px 5%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .skills {
+                width: 100%;
+                max-width: 1100px;
+            }
+
+            /* Overriding inline style for H2 to make it dark */
+            .skills h2 {
+                color: var(--text-dark) !important; 
+                text-align: center;
+                font-size: 3.5rem;
+                margin-bottom: 50px;
+                position: relative;
+            }
+
+            .skills h2::after {
+                content: '';
+                display: block;
+                width: 80px;
+                height: 4px;
+                background: var(--primary-color);
+                margin: 10px auto 0;
+                border-radius: 2px;
+            }
+
+            /* --- Main Cards (Programming / Web Tech) --- */
+            /* These are the big white containers */
+            .skills > .sec2-card {
+                background-color: var(--white);
+                border-radius: 15px;
+                padding: 40px;
+                margin-bottom: 40px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Subtle shadow like About page */
+                border: 1px solid rgba(0,0,0,0.02);
+            }
+
+            .sec2-card h3 {
+                color: var(--primary-color);
+                font-size: 1.4rem;
+                margin-bottom: 25px;
+                border-left: 4px solid var(--primary-dark);
+                padding-left: 15px;
+            }
+
+            .sec2-card span {
+                display: block;
+                color: var(--text-dark);
+                font-weight: 600;
+                margin-bottom: 10px;
+                margin-top: 20px;
+                font-size: 1rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            /* --- Skill Bars --- */
+            /* Targeting the nested sec2-card which acts as the bar container */
+            .sec2-card > .sec2-card {
+                background: #e0e0e0; /* Light grey track for light theme */
+                height: 12px;
+                width: 100%;
+                border-radius: 20px;
+                padding: 0; 
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .skill-bar {
+                width: 100%;
+                height: 100%;
+            }
+
+            .skill-progress {
+                height: 100%;
+                border-radius: 20px;
+                width: 0; 
+                animation: fillBar 1.5s ease-out forwards;
+            }
+
+            /* --- Skill Colors & Widths --- */
+            /* Programming Languages */
+            .c { width: 90% !important; background: linear-gradient(90deg, #00b09b, #96c93d); }
+            .java { width: 75% !important; background: linear-gradient(90deg, #f12711, #f5af19); }
+            .python { width: 80% !important; background: linear-gradient(90deg, #4b6cb7, #224384); }
+
+            /* Web Technologies */
+            .html { width: 95% !important; background: linear-gradient(90deg, #e65c00, #ba9e14); }
+            .css { width: 90% !important; background: linear-gradient(90deg, #2980b9, #6dd5fa); }
+            .js { width: 70% !important; background: linear-gradient(90deg, #f12711, #f5af19); }
+
+            @keyframes fillBar {
+                from { width: 0; }
+            }
+
+            /* --- Responsive --- */
+            @media (max-width: 768px) {
+                nav { display: none; }
+                header { justify-content: center; }
+                .skills > .sec2-card { width: 100%; }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+              <div class="logo">My Portfolio</div>
+              <ul>
+                <li> <a href="index.html" > Home</a></li>
+                <li> <a href="About.html">About</a></li>
+                <li> <a href="Skills.html" class="active">Skills</a></li>
+                <li> <a href="Projects.html ">Project</a></li>
+                <li> <a href="Contacts.html">Contact</a></li>
+              </ul>
+           </nav>
+       </header>
+       <main>
+         <br>
+        <section class="skills">
+            <h2>My Skills</h2>
+            <br>
+            
+            <!-- Programming Languages Section -->
+            <div class="sec2-card">
+                <h3>Programming Languages</h3>
+                
+                <span>C</span>
+                <div class="sec2-card">
+                    <div class="skill-bar">
+                        <div class="skill-progress c"></div>
+                    </div>
+                </div>
+
+                <span>JAVA</span>
+                <div class="sec2-card">
+                    <div class="skill-bar">
+                        <div class="skill-progress java"></div>
+                    </div>
+                </div>
+
+                <span>Python</span>
+                <div class="sec2-card">
+                    <div class="skill-bar">
+                        <div class="skill-progress python"></div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            
+            <!-- Web Technologies Section -->
+            <div class="sec2-card">
+                <h3>Web Technologies</h3>
+                
+                <span>HTML</span>
+                <div class="sec2-card">
+                    <div class="skill-bar">
+                        <div class="skill-progress html"></div>
+                    </div>
+                </div>
+
+                <span>CSS</span>
+                <div class="sec2-card">
+                    <div class="skill-bar">
+                        <div class="skill-progress css"></div>
+                    </div>
+                </div>
+
+                <span>JavaScript</span>
+                <div class="sec2-card">
+                    <div class="skill-bar">
+                        <div class="skill-progress js"></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    </body>
+</html>

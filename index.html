@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>My Portfolio</title>
+        <!-- Google Fonts for modern typography -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <style>
+            /* --- CSS Reset & Variables --- */
+            :root {
+                --primary-color: #6C63FF; /* Modern Purple */
+                --primary-dark: #5a52d5;
+                --text-dark: #333333;
+                --text-light: #666666;
+                --bg-color: #f9f9ff;
+                --white: #ffffff;
+                --nav-height: 80px;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Poppins', sans-serif;
+                background-color: var(--bg-color);
+                color: var(--text-dark);
+                line-height: 1.6;
+            }
+
+            a {
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            /* --- Header & Navigation --- */
+            header {
+                background-color: rgba(255, 255, 255, 0.95);
+                height: var(--nav-height);
+                display: flex;
+                align-items: center;
+                justify-content: space-between; /* Aligns logo left, nav right */
+                padding: 0 5%;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+                position: fixed; /* Keeps nav at top */
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+                backdrop-filter: blur(10px);
+            }
+
+            .logo {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--primary-color);
+                letter-spacing: 1px;
+            }
+
+            nav ul {
+                display: flex;
+                gap: 30px;
+            }
+
+            nav ul li a {
+                color: var(--text-dark);
+                font-weight: 500;
+                font-size: 1rem;
+                position: relative;
+   
+            }
+
+            /* Hover underline effect */
+            nav ul li a::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                background: var(--primary-color);
+                bottom: -5px;
+                left: 0;
+                transition: width 0.3s;
+   
+            }
+
+            nav ul li a:hover::after,
+            nav ul li a.active::after {
+                width: 100%;
+            }
+
+            nav ul li a.active {
+                color: var(--primary-color);
+            }
+
+            /* --- Main Content & Hero Section --- */
+            main {
+                margin-top: var(--nav-height); /* Prevents content hiding behind fixed nav */
+                min-height: calc(100vh - var(--nav-height));
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0 5%;
+            }
+
+            .sec1 {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                max-width: 1200px;
+                flex-wrap: wrap; /* Allows wrapping on smaller screens */
+            }
+
+            /* Text Content Area */
+            .sec1-con {
+                flex: 1;
+                min-width: 300px;
+                padding-right: 50px;
+                animation: slideLeft 1s ease forwards;
+            }
+
+            .sec1-con h1 {
+                font-size: 3rem;
+                font-weight: 700;
+                margin-bottom: 10px;
+                line-height: 1.2;
+            }
+
+            .sec1-con h1 span {
+                color: var(--primary-color);
+            }
+
+            .sec1-con h2 {
+                font-size: 1.5rem;
+                font-weight: 500;
+                color: var(--text-light);
+                margin-bottom: 20px;
+            }
+
+            .sec1-con p {
+                font-size: 1rem;
+                color: var(--text-light);
+                margin-bottom: 30px;
+                max-width: 500px;
+            }
+
+            /* CTA Button */
+            .cta-buttons .btn {
+                display: inline-block;
+                padding: 12px 30px;
+                border-radius: 30px;
+                font-weight: 600;
+                font-size: 1rem;
+                box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+            }
+
+            .btn.primary {
+                background-color: var(--primary-color);
+                color: var(--white);
+            }
+
+            .btn.primary:hover {
+                background-color: var(--primary-dark);
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+            }
+
+            /* Image Area */
+            .sec1-img {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                min-width: 300px;
+                animation: slideRight 1s ease forwards;
+            }
+
+            .sec1-img img {
+                width: 350px;
+                height: 350px;
+                object-fit: cover;
+                border-radius: 50%; /* Makes image circular */
+                border: 5px solid var(--white);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                animation: float 6s ease-in-out infinite;
+            }
+
+            /* --- Animations --- */
+            @keyframes slideLeft {
+                from { opacity: 0; transform: translateX(-50px); }
+                to { opacity: 1; transform: translateX(0); }
+            }
+
+            @keyframes slideRight {
+                from { opacity: 0; transform: translateX(50px); }
+                to { opacity: 1; transform: translateX(0); }
+            }
+
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-15px); }
+                100% { transform: translateY(0px); }
+            }
+
+            /* --- Responsive Design (Mobile) --- */
+            @media (max-width: 768px) {
+                header {
+                    padding: 0 20px;
+                }
+
+                nav {
+                    display: none; /* In a real project, you would add a hamburger menu here */
+                }
+                
+                /* Simple mobile nav replacement for this demo */
+                header {
+                    justify-content: center;
+                }
+                
+                .sec1 {
+                    flex-direction: column-reverse; /* Text goes below image on mobile */
+                    text-align: center;
+                }
+
+                .sec1-con {
+                    padding-right: 0;
+                    margin-top: 30px;
+                }
+
+                .sec1-con p {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .sec1-img img {
+                    width: 250px;
+                    height: 250px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+          <nav>
+            <div class="logo">My Portfolio</div>
+            <ul>
+              <li> <a href="index.html" class="active"> Home</a></li>
+              <li> <a href="About.html">About</a></li>
+              <li> <a href="Skills.html">Skills</a></li>
+              <li> <a href="Projects.html">Project</a></li>
+              <li> <a href="Contacts.html">Contact</a></li>
+            </ul>
+         </nav>
+       </header>
+       <main>
+        <section class="sec1">
+            <div class="sec1-con">
+                   <h1>Hi, I'm <span>Harshini</span></h1>
+                <h2>Graduate Student and Frontend Developer </h2>
+                <p>I am a dedicated and detail-oriented professional with a strong passion for learning and growth.
+             I enjoy turning ideas into practical solutions and continuously improving my skills. 
+            This portfolio highlights my work, experience, and commitment to delivering quality results.</p>
+            <div class="cta-buttons">
+               <!-- Note: Ensure your PDF is in the correct relative path or hosted online -->
+               <a href="C:\Users\phars\OneDrive\Desktop\Harshini Resume 1.pdf" target="_blank" class="btn primary"> View Resume</a>
+            </div>
+            </div>
+          <div class="sec1-img">
+            <img src="C:\Users\phars\Downloads\undraw_professional-woman-avatar_ivds.svg" alt="Harshini Portrait">
+          </div>
+        </section>
+       </main>
+    </body>
+</html>

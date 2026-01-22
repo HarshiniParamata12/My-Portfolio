@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>About Me - My Portfolio</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <style>
+            /* --- CSS Reset & Variables --- */
+            :root {
+                --primary-color: #6C63FF; /* Matching other pages */
+                --primary-dark: #5a52d5;
+                --text-dark: #333333;
+                --text-light: #666666;
+                --bg-color: #f9f9ff;      /* Light background */
+                --white: #ffffff;
+                --nav-height: 80px;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                font-family: 'Poppins', sans-serif;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: var(--bg-color);
+                color: var(--text-dark);
+                overflow-x: hidden;
+            }
+
+            a { text-decoration: none; transition: all 0.3s ease; }
+            ul { list-style: none; }
+
+            /* --- Header --- */
+            header {
+                background-color: rgba(255, 255, 255, 0.95);
+                height: var(--nav-height);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 5%;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+                backdrop-filter: blur(10px);
+            }
+
+            .logo {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--primary-color);
+                letter-spacing: 1px;
+            }
+
+            nav ul {
+                display: flex;
+                gap: 30px;
+            }
+
+            nav ul li a {
+                color: var(--text-dark);
+                font-weight: 500;
+                font-size: 1rem;
+                position: relative;
+            }
+
+            nav ul li a::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                background: var(--primary-color);
+                bottom: -5px;
+                left: 0;
+                transition: width 0.3s;
+            }
+
+            nav ul li a:hover::after,
+            nav ul li a.active::after {
+                width: 100%;
+            }
+
+            nav ul li a.active {
+                color: var(--primary-color);
+            }
+
+            /* --- Main Content --- */
+            main {
+                margin-top: var(--nav-height);
+                padding: 60px 5%;
+                max-width: 1200px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            /* Override Inline H2 Style */
+            main > h2 {
+                color: var(--text-dark) !important; /* Overrides inline white */
+                text-align: center;
+                font-size: 2.5rem;
+                margin-bottom: 50px;
+                position: relative;
+            }
+
+            main > h2::after {
+                content: '';
+                display: block;
+                width: 80px;
+                height: 4px;
+                background: var(--primary-color);
+                margin: 10px auto 0;
+                border-radius: 2px;
+            }
+
+            /* --- Cards Section --- */
+            .sec2 {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+            }
+
+            .sec2-card {
+                background-color: var(--white);
+                flex: 1 1 300px;
+                max-width: 350px;
+                padding: 40px 30px;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+                text-align: center;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                border-top: 5px solid transparent;
+            }
+
+            .sec2-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                border-top: 5px solid var(--primary-color);
+            }
+
+            /* --- Card Content Overrides --- */
+
+            /* 1. The Emoji/Icon (First H3) */
+            .sec2-card h3:first-child {
+                font-size: 50px !important;
+                margin-bottom: 20px;
+                background: #f0f0ff;
+                width: 80px;
+                height: 80px;
+                line-height: 80px;
+                border-radius: 50%;
+                margin-left: auto;
+                margin-right: auto;
+                color: var(--primary-color) !important; /* Overrides inline yellow/white */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* 2. The Card Title (Second H3) */
+            .sec2-card h3:nth-child(2) {
+                color: var(--text-dark) !important; /* Overrides inline white */
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+                font-weight: 700;
+            }
+
+            /* 3. The Paragraph */
+            .sec2-card p {
+                color: var(--text-light) !important; /* Overrides inline white */
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            /* --- Mobile Responsive --- */
+            @media (max-width: 768px) {
+                nav { display: none; }
+                header { justify-content: center; }
+                
+                main > h2 { font-size: 2rem; }
+                
+                .sec2 {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                
+                .sec2-card {
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+              <div class="logo">My Portfolio</div>
+              <ul>
+                <li> <a href="index.html"> Home</a></li>
+                <li> <a href="About.html" class="active">About</a></li>
+                <li> <a href="Skills.html">Skills</a></li>
+                <li> <a href="Projects.html ">Project</a></li>
+                <li> <a href="Contacts.html">Contact</a></li>
+              </ul>
+           </nav>
+       </header>
+       
+       <br>
+       <main>
+        <!-- I added !important in CSS to change this color to dark -->
+        <h2>About Me</h2>
+           
+            <section class="sec2">
+                <!-- Communication Card -->
+                <div class="sec2-card">
+                    <h3 style=" color:rgb(254, 226, 102); font-size: 40px;"> &#128483;</h3> 
+                    <h3 style="color: white;">Efficient Communication</h3>
+                    <p style="color:white"> I consider efficient communication one of my core strengths. By combining clear
+                    expression, active listening, and thoughtful feedback, I ensure smooth collaboration,
+                    better problem-solving, and successful project outcomes.</p>
+                </div>
+
+               <!-- Time Management Card -->
+               <div class="sec2-card">
+                <h3 style=" color:white; font-size: 40px;"> &#8987;</h3> 
+                <h3 style="color: white;">Time Management</h3>
+                <p style="color:white"> Time management is one of my key strengths. I efficiently
+                  plan and organize my work, prioritize important tasks, and ensure timely completion 
+                  of projects while maintaining quality and focus.</p>
+              </div>
+
+             <!-- Problem Solving Card -->
+             <div class="sec2-card">
+                <h3 style=" color:white; font-size: 40px;"> &#128161;</h3> 
+                <h3 style="color: white;">Problem Solving</h3>
+                <!-- Fixed the text content here to match the title -->
+                <p style="color:white"> I approach challenges with a analytical mindset. I efficiently
+                  analyze problems, explore creative solutions, and ensure timely resolution 
+                  of issues while maintaining quality and focus.</p>
+              </div>
+
+            </section>
+       </main>
+    </body>
+</html>
